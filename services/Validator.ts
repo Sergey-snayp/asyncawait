@@ -1,5 +1,5 @@
-import { IAccumulatorResponse, IAccumulatorRequest, IAccumulator } from '../../interfaces/Validator';
-import { IAPIWrapper } from '../../interfaces/APIWrapper';
+import { IAccumulatorResponse, IAccumulatorRequest, IAccumulator } from '../interfaces/Validator';
+import { IAPIWrapper } from '../interfaces/APIWrapper';
 export class Validator {
     APIWrapper: IAPIWrapper;
 
