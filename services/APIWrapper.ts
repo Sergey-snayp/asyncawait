@@ -1,10 +1,10 @@
-import { getOutcomeOdds, validateAccumulatorRisk, validateOdd, validateUserRisk } from "../API";
+import { getOutcomeOdds, validateAccumulatorRisk, validateOdd, validateUserRisk } from "./API";
 import { IAPIWrapper } from '../interfaces/APIWrapper';
 import { outcomeIds, odds } from '../interfaces/Validator';
 import { IUser } from "../interfaces/User";
 
 class ApiWrapper implements IAPIWrapper {
-    validateAccumulatorRisk = (accumulatorOdds): Promise<boolean> => validateAccumulatorRisk(accumulatorOdds);
+    validateAccumulatorRisk = (accumulatorOdds: number): Promise<boolean> => validateAccumulatorRisk(accumulatorOdds);
     getOutcomeOdds = (outcomeIds: outcomeIds): Promise<number[]> => Promise.all( outcomeIds.map((outcomeId) => getOutcomeOdds(outcomeId)) );
 
     validateOdds = (odds: odds): Promise<boolean> =>
@@ -12,7 +12,7 @@ class ApiWrapper implements IAPIWrapper {
             odds.map(odd => validateOdd(odd))
         ).then(results => results.every(Boolean))
 
-    calculateAccumulatorOdds = (odds: odds): Promise<number> => {
+    calculateOdds = (odds: odds): Promise<number> => {
         return new Promise((resolve) => {
             resolve(odds.reduce((a, b) => a * b));
         })

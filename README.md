@@ -19,7 +19,7 @@ When a user places a bet on an outcome, we need to do the following tasks before
 This requires multiple calls to various services; each has a latency. We want to minimise this latency.
 
 ## Task
-- We have somee sample code in `ValidatorBuilder.ts`.
+- We have somee sample code in `Validator.ts`.
 - We have a test suite in `Validator.spec.ts`. All the tests pass.
 - We have some mock services in `API.ts`. Each service has a mock latency.
     - You may not modify the `API.ts`. Think of them as an external provider.

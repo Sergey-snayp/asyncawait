@@ -1,4 +1,4 @@
-import { IUser } from "./interfaces/User";
+import { IUser } from "../interfaces/User";
 
 const delay = (seconds: number) => {
     return new Promise((resolve) => {

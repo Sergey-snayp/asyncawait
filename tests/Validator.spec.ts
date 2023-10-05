@@ -1,6 +1,6 @@
-import { IAccumulatorRequest } from './interfaces/Validator';
-import { Validator } from './services/validators/ValidatorBuilder';
-import APIWrapper from './services/APIWrapper';
+import { IAccumulatorRequest } from '../interfaces/Validator';
+import { Validator } from '../services/validators/Validator';
+import APIWrapper from '../services/APIWrapper';
 
 
 describe('Validator', () => {
