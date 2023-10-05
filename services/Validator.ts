@@ -13,7 +13,7 @@ export class Validator {
         ]);
 
         const [accumulatorOdds, validOdds] = await Promise.all([
-            this.APIWrapper.calculateAccumulatorOdds(odds),
+            this.APIWrapper.calculateOdds(odds),
             this.APIWrapper.validateOdds(odds)
         ]);
 

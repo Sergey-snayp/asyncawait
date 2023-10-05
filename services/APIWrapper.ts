@@ -12,7 +12,7 @@ class ApiWrapper implements IAPIWrapper {
             odds.map(odd => validateOdd(odd))
         ).then(results => results.every(Boolean))
 
-    calculateAccumulatorOdds = (odds: odds): Promise<number> => {
+    calculateOdds = (odds: odds): Promise<number> => {
         return new Promise((resolve) => {
             resolve(odds.reduce((a, b) => a * b));
         })
