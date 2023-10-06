@@ -14,7 +14,6 @@ export interface IAccumulatorResponse {
     accept: boolean,
 }
 
-export interface IAccumulator extends IAccumulatorRequest {
-    odds: odds,
-    validUser: boolean,
+export interface IAccumulatorCalculator {
+    calculateOdds: (odds: odds) => Promise<number>,
 }

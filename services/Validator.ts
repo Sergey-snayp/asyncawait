@@ -1,10 +1,13 @@
-import { IAccumulatorResponse, IAccumulatorRequest, IAccumulator } from '../interfaces/Validator';
-import { IAPIWrapper } from '../interfaces/APIWrapper';
+import { IAccumulatorResponse, IAccumulatorRequest } from '../interfaces/Accumulator';
+import { APIWrapperType } from '../interfaces/APIWrapper';
+import { IAccumulatorCalculator } from "../interfaces/Accumulator";
 export class Validator {
-    APIWrapper: IAPIWrapper;
+    APIWrapper: APIWrapperType;
+    accCalculator: IAccumulatorCalculator;
 
-    constructor(provider: IAPIWrapper) {
+    constructor(provider: APIWrapperType, accCalculator: IAccumulatorCalculator) {
         this.APIWrapper = provider;
+        this.accCalculator = accCalculator;
     }
     validateAccumulator = async (accumulatorRequest: IAccumulatorRequest): Promise<IAccumulatorResponse> => {
         const [validUser, odds] = await Promise.all([
@@ -13,7 +16,7 @@ export class Validator {
         ]);
 
         const [accumulatorOdds, validOdds] = await Promise.all([
-            this.APIWrapper.calculateOdds(odds),
+            this.accCalculator.calculateOdds(odds),
             this.APIWrapper.validateOdds(odds)
         ]);
 

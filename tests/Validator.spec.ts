@@ -1,6 +1,7 @@
-import { IAccumulatorRequest } from '../interfaces/Validator';
+import { IAccumulatorRequest } from '../interfaces/Accumulator';
 import { Validator } from '../services/Validator';
-import APIWrapper from '../services/APIWrapper';
+import { ApiWrapper } from '../services/APIWrapper';
+import { AccumulatorCalculator } from '../helpers/AccumulatorCalculator';
 
 
 describe('Validator', () => {
@@ -12,7 +13,7 @@ describe('Validator', () => {
             outcomeIds: [1,2]
         };
 
-        const validator = new Validator(APIWrapper);
+        const validator = new Validator(ApiWrapper, AccumulatorCalculator);
         const result = await validator.validateAccumulator(accumulatorRequest);
         expect(result.accept).toBeFalsy();
     });
@@ -24,7 +25,7 @@ describe('Validator', () => {
             outcomeIds: [1,2]
         };
 
-        const validator = new Validator(APIWrapper);
+        const validator = new Validator(ApiWrapper, AccumulatorCalculator);
         const result = await validator.validateAccumulator(accumulatorRequest);
         expect(result.accept).toBeTruthy();
         expect(result.accumulatorOdds).toEqual(4.5);
@@ -36,7 +37,7 @@ describe('Validator', () => {
             outcomeIds: [1,11]
         };
 
-        const validator = new Validator(APIWrapper);
+        const validator = new Validator(ApiWrapper, AccumulatorCalculator);
         const result = await validator.validateAccumulator(accumulatorRequest);
         expect(result.accept).toBeFalsy();
     });
@@ -47,7 +48,7 @@ describe('Validator', () => {
             outcomeIds: [1,2,3,4]
         };
 
-        const validator = new Validator(APIWrapper);
+        const validator = new Validator(ApiWrapper, AccumulatorCalculator);
         const result = await validator.validateAccumulator(accumulatorRequest);
         expect(result.accept).toBeFalsy();
         expect(result.accumulatorOdds).toEqual(121.5);

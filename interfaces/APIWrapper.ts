@@ -1,10 +1,9 @@
-import { outcomeIds, odds } from './Validator';
+import { outcomeIds, odds } from './Accumulator';
 import {IUser} from "./User";
 
-export interface IAPIWrapper {
+export type APIWrapperType = {
     validateAccumulatorRisk: (accumulatorOdds: number) => Promise<boolean>,
     getOutcomeOdds: (outcomeIds: outcomeIds) => Promise<number[]>,
     validateOdds: (odds: odds) => Promise<boolean>,
-    calculateOdds: (odds: odds) => Promise<number>,
     validateUserRisk: (userId: IUser['id']) => Promise<boolean>
 }
