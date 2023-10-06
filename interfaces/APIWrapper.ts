@@ -3,7 +3,7 @@ import {IUser} from "./User";
 
 export type APIWrapperType = {
     validateAccumulatorRisk: (accumulatorOdds: number) => Promise<boolean>,
-    getOutcomeOdds: (outcomeIds: outcomeIds) => Promise<number[]>,
-    validateOdds: (odds: odds) => Promise<boolean>,
+    getOutcomeOddsInParallel: (outcomeIds: outcomeIds) => Promise<number[]>,
+    validateOddsInParallel: (odds: odds) => Promise<boolean>,
     validateUserRisk: (userId: IUser['id']) => Promise<boolean>
 }

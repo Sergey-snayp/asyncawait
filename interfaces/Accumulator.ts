@@ -15,5 +15,6 @@ export interface IAccumulatorResponse {
 }
 
 export interface IAccumulatorCalculator {
-    calculateOdds: (odds: odds) => Promise<number>,
+    calculateOddsParallel: (odds: odds) => Promise<number>,
+    calculateOdds: (odds: odds) => number,
 }
